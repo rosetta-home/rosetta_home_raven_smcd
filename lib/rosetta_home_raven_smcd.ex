@@ -1,7 +1,7 @@
-defmodule DeviceManager.Device.SmartMeter.RavenSMCD do
+defmodule Cicada.DeviceManager.Device.SmartMeter.RavenSMCD do
   use GenServer
   require Logger
-
+  alias Cicada.{DeviceManager}
   @behaviour DeviceManager.Behaviour.SmartMeter
 
   def start_link(id, device) do
@@ -103,10 +103,10 @@ defmodule DeviceManager.Device.SmartMeter.RavenSMCD do
 
 end
 
-defmodule DeviceManager.Discovery.SmartMeter.RavenSMCD do
-  use DeviceManager.Discovery
+defmodule Cicada.DeviceManager.Discovery.SmartMeter.RavenSMCD do
+  use Cicada.DeviceManager.Discovery
   require Logger
-  alias DeviceManager.Device.SmartMeter
+  alias Cicada.DeviceManager.Device.SmartMeter
 
   defmodule EventHandler do
     use GenEvent

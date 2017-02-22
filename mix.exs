@@ -10,27 +10,14 @@ defmodule RosettaHomeRavenSmcd.Mixfile do
      deps: deps()]
   end
 
-  # Configuration for the OTP application
-  #
-  # Type "mix help compile.app" for more information
   def application do
-    # Specify extra applications you'll use from Erlang/Elixir
-    [extra_applications: [:logger, :raven_smcd]]
+    [extra_applications: [:logger, :raven_smcd ,:cicada]]
   end
 
-  # Dependencies can be Hex packages:
-  #
-  #   {:my_dep, "~> 0.3.0"}
-  #
-  # Or git/path repositories:
-  #
-  #   {:my_dep, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"}
-  #
-  # Type "mix help deps" for more examples and options
   defp deps do
     [
-      {:raven_smcd, "~> 0.1.8"},
-      {:cicada, github: "rosetta-home/cicada", branch: "dependency"}
+      {:raven_smcd, "~> 0.1.9"},
+      {:cicada, github: "rosetta-home/cicada", optional: true}
     ]
   end
 end
