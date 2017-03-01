@@ -16,7 +16,7 @@ defmodule RosettaHomeRavenSmcd.Mixfile do
 
   defp deps do
     [
-      {:raven_smcd, "~> 0.2.0"},
+      {:raven_smcd, "~> 0.2.1"},
       {:cicada, github: "rosetta-home/cicada", optional: true}
     ]
   end
