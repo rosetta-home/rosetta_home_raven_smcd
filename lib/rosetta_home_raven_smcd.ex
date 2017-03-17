@@ -1,5 +1,5 @@
 defmodule Cicada.DeviceManager.Device.SmartMeter.RavenSMCD do
-  use GenServer
+  use Cicada.DeviceManager.DeviceHistogram
   require Logger
   alias Cicada.{DeviceManager}
   @behaviour DeviceManager.Behaviour.SmartMeter
