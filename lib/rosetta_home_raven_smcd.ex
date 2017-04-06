@@ -120,36 +120,12 @@ defmodule Cicada.DeviceManager.Discovery.SmartMeter.RavenSMCD do
   end
 
   def register_callbacks do
-    Logger.info "Starting Raven"
     Raven.EventManager.add_handler(EventHandler)
-    #Hacking raven for demo
-    #Process.send_after(self, %Raven.Meter.State{
-    #    id: :"0xFFFFFFFFFFFFFF",
-    #    connection_status: %Raven.Message.ConnectionStatus{
-    #      meter_mac_id: "0xFFFFFFFFFFFFFF",
-    #      status: "Connected",
-    #      channel: "22",
-    #      link_strength: 100
-    #    },
-    #    meter_info: %Raven.Message.MeterInfo{
-    #      meter_type: "electric"
-    #    },
-    #    price: %Raven.Message.PriceCluster{
-    #      price: 0.046
-    #    },
-    #    summation: %Raven.Message.CurrentSummationDelivered{
-    #      kw_delivered: 0,
-    #      kw_received: 0
-    #    },
-    #    demand: %Raven.Message.InstantaneousDemand{
-    #      kw: 0
-    #    }
-    #}, 100)
-    {:ok, []}
+    SmartMeter.RavenSMCD
   end
 
   def handle_info(%Raven.Meter.State{} = device, state) do
-    {:noreply, handle_device(device, SmartMeter.RavenSMCD, state)}
+    {:noreply, handle_device(device, state)}
   end
 
   def handle_info(_device, state) do
