@@ -104,24 +104,23 @@ defmodule Cicada.DeviceManager.Device.SmartMeter.RavenSMCD do
 end
 
 defmodule Cicada.DeviceManager.Discovery.SmartMeter.RavenSMCD do
-  use Cicada.DeviceManager.Discovery
   require Logger
   alias Cicada.DeviceManager.Device.SmartMeter
+  use Cicada.DeviceManager.Discovery, module: SmartMeter.RavenSMCD
 
   defmodule EventHandler do
     use GenEvent
     require Logger
 
     def handle_event(device, parent) do
-        send(parent, device)
-        {:ok, parent}
+      send(parent, device)
+      {:ok, parent}
     end
-
   end
 
   def register_callbacks do
     Raven.EventManager.add_handler(EventHandler)
-    SmartMeter.RavenSMCD
+    %{}
   end
 
   def handle_info(%Raven.Meter.State{} = device, state) do
