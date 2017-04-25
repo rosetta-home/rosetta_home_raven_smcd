@@ -116,10 +116,17 @@ defmodule Cicada.DeviceManager.Discovery.SmartMeter.RavenSMCD do
       send(parent, device)
       {:ok, parent}
     end
-  end
+
+    def terminate(reason, parent) do
+      Logger.info "RavenSMCD EventHandler Terminating: #{inspect reason}"
+      :ok
+    end
+
+    end
 
   def register_callbacks do
-    Raven.EventManager.add_handler(EventHandler)
+    Logger.info "Starting RavenSMCD Listener"
+    Raven.Events |> GenEvent.add_mon_handler(EventHandler, self())
     %{}
   end
 
